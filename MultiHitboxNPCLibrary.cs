@@ -26,19 +26,19 @@ namespace MultiHitboxNPCLibrary
 {
 	public class MultiHitboxNPCLibrary : Mod
 	{
-        public override void HandlePacket(BinaryReader reader, int whoAmI)
-        {
-            switch (reader.ReadString())
-            {
-                case "MultiHitboxNPCLibrary:SyncNPC":
-                    NPC npc = Main.npc[reader.ReadInt32()];
-                    if (npc.active)
-                    {
-                        npc.GetGlobalNPC<MultiHitboxNPC>().hitboxes = MultiHitbox.Read(reader);
-                        npc.GetGlobalNPC<MultiHitboxNPC>().hitboxes.Refresh();
-                    }
-                    break;
-            }
-        }
-    }
+		public override void HandlePacket(BinaryReader reader, int whoAmI)
+		{
+			switch (reader.ReadString())
+			{
+				case "MultiHitboxNPCLibrary:SyncNPC":
+					NPC npc = Main.npc[reader.ReadInt32()];
+					if (npc.active)
+					{
+						npc.GetGlobalNPC<MultiHitboxNPC>().hitboxes = MultiHitbox.Read(reader);
+						npc.GetGlobalNPC<MultiHitboxNPC>().hitboxes.Refresh();
+					}
+					break;
+			}
+		}
+	}
 }
